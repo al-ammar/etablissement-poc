@@ -23,5 +23,7 @@ public interface IUserServices {
 	Page<UserDTO> getUsers(Pageable pageable);
 
 	List<UserDTO> searchUsers(UserCriteriaDTO user);
+	
+	boolean authentication(String user, String pass);
 
 }

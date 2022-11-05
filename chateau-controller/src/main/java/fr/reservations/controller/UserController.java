@@ -45,7 +45,7 @@ import lombok.extern.slf4j.Slf4j;
 @Tag(name = "user services", description = "Prouf of concept Services ")
 public class UserController {
 
-	private final static String JSON_TYPE = MediaType.APPLICATION_JSON_VALUE;
+	protected final static String JSON_TYPE = MediaType.APPLICATION_JSON_VALUE;
 
 	@Autowired
 	private IUserServices services;

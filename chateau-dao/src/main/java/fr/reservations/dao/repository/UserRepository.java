@@ -12,4 +12,6 @@ import fr.reservations.dao.entity.User;
 public interface UserRepository extends JpaRepository<User, String>, UserRepositoryCustom {
 
 	List<User> findByUserName(String userName, Pageable pageable);
+	
+	List<User> findByUserNameAndThePassword(String userName, String password);
 }

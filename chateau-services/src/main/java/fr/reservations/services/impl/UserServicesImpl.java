@@ -1,6 +1,5 @@
 package fr.reservations.services.impl;
 
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,6 +10,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import fr.reservations.common.dtos.UserCriteriaDTO;
 import fr.reservations.common.dtos.UserDTO;
@@ -24,7 +24,6 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Transactional
 public class UserServicesImpl implements IUserServices {
-	
 
 	@Autowired
 	private UserRepository repository;
@@ -85,5 +84,11 @@ public class UserServicesImpl implements IUserServices {
 	@Override
 	public List<UserDTO> searchUsers(UserCriteriaDTO user) {
 		return repository.searchByCritteria(user).stream().map(UserMapper::toUserDTO).collect(Collectors.toList());
+	}
+
+	@Override
+	public boolean authentication(String user, String pass) {
+		List<User> results = repository.findByUserNameAndThePassword(user, pass);
+		return !CollectionUtils.isEmpty(results);
 	}
 }
