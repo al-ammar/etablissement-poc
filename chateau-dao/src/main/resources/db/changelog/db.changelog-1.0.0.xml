@@ -8,10 +8,10 @@
     <changeSet id="create-user-table" author="alaa">
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="UTILISATEUR"/>
+                <tableExists tableName="USER"/>
             </not>
         </preConditions>
-        <createTable tableName="UTILISATEUR">
+        <createTable tableName="USER">
             <column name="ID" type="varchar2(40)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -32,7 +32,7 @@
 			<column name="CONTENT" 		type="bytea"/>
 
         </createTable>
-        <addUniqueConstraint tableName="UTILISATEUR" constraintName="UDX_UTILISATEUR"
+        <addUniqueConstraint tableName="USER" constraintName="UDX_USER"
                              columnNames="ID"/>
     </changeSet>
 

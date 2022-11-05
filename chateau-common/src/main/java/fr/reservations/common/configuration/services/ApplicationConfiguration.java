@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 @Configuration
-@ComponentScan(value = { "ma.poc.services"})
+@ComponentScan(value = { "fr.reservations.services"})
 public class ApplicationConfiguration {
 
 	@Bean
