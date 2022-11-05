@@ -1,0 +1,137 @@
+server:
+  port: 8086
+  servlet:
+    context-path: /rest
+kafka:
+  bootstrapAddress: 192.168.192.21:9093
+
+
+logging:
+  level:
+    io.dapr: WARN
+    #org.springframework.web: "debug"
+    org.hibernate: WARN
+    #org.apache.kafka: "warn"
+    org.apache.kafka: ERROR
+    org.springframework.security: TRACE
+
+
+# Spring
+spring:
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  profiles:
+    active: dev
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jackson: 
+    default-property-inclusion: NON_NULL
+
+  datasource:
+    name: poc
+    platform: postgres
+    ### In memory H2 connection string
+#   jdbc-url: jdbc:h2:mem:testdb;
+    jdbc-url: jdbc:postgresql://127.0.0.1:5432/alaa
+    #Mode=MSSQLServer
+    #url: jdbc:h2:mem:testdb;
+    url : jdbc:postgresql://127.0.0.1:5432/alaa
+    #Mode=MSSQLServer
+    #username: sa
+    username: alaa
+    # It needs to be empty for h2 (enter sa into h2-console)
+    password: alaa # It needs to be empty for h2
+    type: # It needs to be empty for h2
+    #driver-class-name: org.h2.Driver #it has to be populated to avoid "Failed to load driver in either of HikariConfig class loader or Thread context classloader" error
+    tlsEnabled: false
+    minimum-idle: 10 # The minimum number of established connections that should be kept in the pool at all times.
+    maximum-pool-size: 50 # The maximum number of connections that should be kept in the pool at all times.
+    idle-timeout: 30000 # The maximum amount of time in milliseconds that a connection is allowed to sit idle in connection pool
+    max-lifetime: 60000 # The maximum lifetime of a connection in the pool
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+     #   ddl-auto: none
+        jdbc:
+          loc:
+            non_contextual_creation: true    
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    pageable:
+      page-size: 100
+
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+    enabled: true
+
+  cloud:
+    config:
+      enabled: false
+  # security:
+    # oauth2:
+      # client:
+        # registration:
+          # keycloak:
+            # client-id: backend
+            # authorization-grant-type: authorization_code
+            # scope: openid
+        # provider:
+          # keycloak:
+            # issuer-uri: http://localhost:8080/realms/frontend
+            # user-name-attribute: preferred_username
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/frontend
+            
+# keycloak:
+  # realm: frontend
+  # auth-server-url: http://localhost:8080/
+  # resource: front
+  # credentials:
+    # secret: OA9B2ph3SX4lOOaLJJ4JXl5334jhvvJN
+  # bearer-only: false
+  # public-client: true
+  # use-resource-role-mappings : true
+  # principal-attribute: preferred_username
+
+  # ssl-required: external
+  # use-resource-role-mappings: true
+  # principal-attribute: preferred_username
+  # securityConstraints[0]:
+    # authRoles[0]: user
+    # securityCollections[0]:
+      # patterns[0]: /rest/users
+
+    
+    
+management:
+  endpoints:
+    web:
+      base-path: /monitoring
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: 'ALWAYS'
+  health: 
+    circuitbreakers: 
+      enabled: true
+
+---
+# need this block for local build even though some params can be left empty
+global:
+  datasource:
+    truststore:
+      location: /tmp/mssql.jks #fake placeholder value to avoid local build error
+      password:
+      content:
+      type: JKS
