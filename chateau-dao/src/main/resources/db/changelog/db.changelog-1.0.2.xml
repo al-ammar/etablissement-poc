@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="create-section-table" author="alaa">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="SECTION"/>
+            </not>
+        </preConditions>
+        <createTable tableName="SECTION">
+            <column name="ID" type="varchar2(40)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+			<column name="CODE" type="varchar2(100)"/>
+            <column name="LIBELLE" type="varchar2(100)"/>
+			<column name="DESCRIPTION" type="varchar2(255)"/>
+            
+            <column name="INSERTED_AT" type="timestamp(6)"/>
+            <column name="INSERTED_BY" type="varchar2(255)"/>
+            <column name="UPDATED_AT" type="timestamp(6)"/>
+            <column name="UPDATED_BY" type="varchar2(255)"/>
+			<column name="UPDATE_DATE" type="timestamp(6)"/>
+			<column name="ETABLISSEMENT_ID" type="varchar2(40)">
+	            <constraints nullable="false" foreignKeyName="fk_section_etablissement" references="etablissement(id)"/>
+			</column>
+
+        </createTable>
+        <addUniqueConstraint tableName="SECTION" constraintName="UDX_SECTION"
+                             columnNames="ID"/>
+    </changeSet>
+    
+       <changeSet id="create-chambre-table" author="alaa">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="CHAMBRE"/>
+            </not>
+        </preConditions>
+        <createTable tableName="CHAMBRE">
+            <column name="ID" type="varchar2(40)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+			<column name="CODE" type="varchar2(100)"/>
+            <column name="LIBELLE" type="varchar2(100)"/>
+			<column name="DESCRIPTION" type="varchar2(255)"/>
+			<column name="STATUT" type="varchar2(10)"/>
+			<column name="ETAGE" type="int"/>
+			<column name="SECTION_ID" type="varchar2(40)">
+	            <constraints nullable="false" foreignKeyName="fk_chambre_section" references="section(id)"/>
+			</column>
+			
+            <column name="INSERTED_AT" type="timestamp(6)"/>
+            <column name="INSERTED_BY" type="varchar2(255)"/>
+            <column name="UPDATED_AT" type="timestamp(6)"/>
+            <column name="UPDATED_BY" type="varchar2(255)"/>
+			<column name="UPDATE_DATE" type="timestamp(6)"/>
+
+        </createTable>
+        <addUniqueConstraint tableName="CHAMBRE" constraintName="UDX_CHAMBRE"
+                             columnNames="ID"/>
+    </changeSet>
+
+</databaseChangeLog>

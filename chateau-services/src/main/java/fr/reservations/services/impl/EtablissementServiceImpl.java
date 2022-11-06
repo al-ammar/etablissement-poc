@@ -29,7 +29,7 @@ public class EtablissementServiceImpl implements EtablissementServices {
 
 	@Override
 	public EtablissementDTO getEtablissementByMatricule(String matricule) {
-		return EtablissementMapper.toDTO(repository.findByCode(matricule));
+		return EtablissementMapper.toDTO(repository.findByMatricule(matricule));
 	}
 
 	@Override

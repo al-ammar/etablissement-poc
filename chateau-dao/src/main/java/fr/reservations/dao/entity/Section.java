@@ -6,6 +6,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,9 +22,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "ETABLISSEMENT")
+@Table(name = "SECTION")
 @EqualsAndHashCode(callSuper = true)
-public class Etablissement extends AbstractEntity {
+public class Section extends AbstractEntity {
 
 	@Column(name = "CODE")
 	private String matricule;
@@ -33,15 +35,11 @@ public class Etablissement extends AbstractEntity {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@Column(name = "ADRESSE")
-	private String adresse;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ETABLISSEMENT_ID", referencedColumnName = "ID")
+	private Etablissement etablissement;
 
-	@Column(name = "TELEPHONE")
-	private String telephone;
+	@OneToMany(mappedBy = "section", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Chambre> chambres;
 
-	@Column(name = "ETAT")
-	private String etat;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "etablissement", cascade = CascadeType.ALL)
-	private List<Section> sections;
 }

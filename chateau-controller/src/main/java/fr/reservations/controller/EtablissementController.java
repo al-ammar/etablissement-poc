@@ -1,5 +1,6 @@
 package fr.reservations.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.reservations.common.dtos.EtablissementDTO;
+import fr.reservations.dao.entity.Chambre;
+import fr.reservations.dao.entity.Etablissement;
+import fr.reservations.dao.entity.Section;
+import fr.reservations.dao.repository.EtablissementRepository;
 import fr.reservations.services.EtablissementServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -33,6 +38,9 @@ public class EtablissementController {
 
 	@Autowired
 	private EtablissementServices services;
+	
+	@Autowired
+	private EtablissementRepository repository;
 
 	@Operation(summary = "GET ALL Etablissement")
 	@ApiResponses({ @ApiResponse(responseCode = "200", description = "Successfully retrieved all Etablissements"),
@@ -53,7 +61,34 @@ public class EtablissementController {
 			@ApiResponse(responseCode = "404", description = "Not Found"),
 			@ApiResponse(responseCode = "500", description = "Unexpected system exception") })
 	@GetMapping(value = "/{userID}")
-	public ResponseEntity<EtablissementDTO> getUser(@PathVariable String id) {
+	public ResponseEntity<EtablissementDTO> getEtablissement(@PathVariable String id) {
 		return ResponseEntity.ok(services.getEtablissement(id));
+	}
+
+	@Operation(summary = "GET ALL Etablissement")
+	@ApiResponses({ @ApiResponse(responseCode = "200", description = "Successfully retrieved all Etablissements"),
+			@ApiResponse(responseCode = "401", description = "Authorization denied"),
+			@ApiResponse(responseCode = "404", description = "Not Found"),
+			@ApiResponse(responseCode = "500", description = "Unexpected system exception") })
+	@GetMapping(produces = UserController.JSON_TYPE)
+	@RequestMapping(path = "/test")
+	public ResponseEntity<Map> getEtablissements() {
+		Etablissement e = new Etablissement();
+		e.setMatricule("XXX");
+		Section s = new Section();
+		s.setMatricule("XXXXXX");
+		s.setEtablissement(e);
+		Section ss = new Section();
+		ss.setMatricule("SSSSS");
+		ss.setEtablissement(e);
+		Chambre B = new Chambre();
+		B.setMatricule("EFEFEFE");
+		B.setSection(ss);
+		ss.setChambres(Arrays.asList(B));
+		e.setSections(Arrays.asList(s, ss));
+		repository.save(e);
+		Map data = new HashMap<>();
+		data.put("data", "");
+		return ResponseEntity.ok(data);
 	}
 }
