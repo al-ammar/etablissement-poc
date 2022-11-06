@@ -38,7 +38,7 @@ public class LoginController {
 			@ApiResponse(responseCode = "401", description = "Authorization denied"),
 			@ApiResponse(responseCode = "404", description = "Not Found"),
 			@ApiResponse(responseCode = "500", description = "Unexpected system exception") })
-	@PostMapping(path = "/search", produces = UserController.JSON_TYPE)
+	@PostMapping(produces = UserController.JSON_TYPE)
 	public ResponseEntity<Map> authentication(@RequestBody UserDTO user) {
 		Map data = new HashMap<>();
 		data.put("data", services.authentication(user.getUserName(), user.getPassword()));

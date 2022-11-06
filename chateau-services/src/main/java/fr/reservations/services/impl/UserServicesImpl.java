@@ -3,6 +3,7 @@ package fr.reservations.services.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
@@ -14,6 +15,7 @@ import org.springframework.util.CollectionUtils;
 
 import fr.reservations.common.dtos.UserCriteriaDTO;
 import fr.reservations.common.dtos.UserDTO;
+import fr.reservations.common.utils.HashUtil;
 import fr.reservations.dao.entity.User;
 import fr.reservations.dao.repository.UserRepository;
 import fr.reservations.services.IUserServices;
@@ -88,7 +90,7 @@ public class UserServicesImpl implements IUserServices {
 
 	@Override
 	public boolean authentication(String user, String pass) {
-		List<User> results = repository.findByUserNameAndThePassword(user, pass);
+		List<User> results = repository.findByUserNameAndThePassword(user, HashUtil.toHash(pass));
 		return !CollectionUtils.isEmpty(results);
 	}
 }

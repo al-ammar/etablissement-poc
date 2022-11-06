@@ -1,6 +1,7 @@
 package fr.reservations.services.mappers;
 
 import fr.reservations.common.dtos.UserDTO;
+import fr.reservations.common.utils.HashUtil;
 import fr.reservations.dao.entity.User;
 
 public final class UserMapper {
@@ -13,7 +14,7 @@ public final class UserMapper {
 	}
 
 	public static User toUser(UserDTO dto) {
-		User user = User.builder().thePassword(dto.getPassword()).userName(dto.getUserName())
+		User user = User.builder().thePassword(HashUtil.toHash(dto.getPassword())).userName(dto.getUserName())
 				.updateDate(dto.getUpdateDate()).lastName(dto.getLastName()).firstName(dto.getFirstName()).build();
 		user.setId(dto.getId());
 		user.setInsertedAt(dto.getCreationDate());
