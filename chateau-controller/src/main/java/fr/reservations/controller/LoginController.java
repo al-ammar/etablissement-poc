@@ -3,6 +3,8 @@ package fr.reservations.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -38,8 +40,8 @@ public class LoginController {
 			@ApiResponse(responseCode = "401", description = "Authorization denied"),
 			@ApiResponse(responseCode = "404", description = "Not Found"),
 			@ApiResponse(responseCode = "500", description = "Unexpected system exception") })
-	@PostMapping(produces = UserController.JSON_TYPE)
-	public ResponseEntity<Map> authentication(@RequestBody UserDTO user) {
+	@PostMapping(consumes = UserController.JSON_TYPE, produces = UserController.JSON_TYPE)
+	public ResponseEntity<Map> authentication(@Valid @RequestBody UserDTO user) {
 		Map data = new HashMap<>();
 		data.put("data", services.authentication(user.getUserName(), user.getPassword()));
 		return ResponseEntity.ok(data);

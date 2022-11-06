@@ -8,31 +8,30 @@
     <changeSet id="create-user-table" author="alaa">
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="USER_"/>
+                <tableExists tableName="ETABLISSEMENT"/>
             </not>
         </preConditions>
-        <createTable tableName="USER_">
+        <createTable tableName="ETABLISSEMENT">
             <column name="ID" type="varchar2(40)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-			<column name="LAST_NAME" type="varchar2(255)"/>
-            <column name="FIRST_NAME" type="varchar2(255)"/>
-
-            <column name="USER_NAME" type="varchar2(36)">
-                <constraints nullable="false"/>
+			<column name="CODE" type="varchar2(100)"/>
+            <column name="LIBELLE" type="varchar2(100)"/>
+			<column name="DESCRIPTION" type="varchar2(255)"/>
+            <column name="ADRESSE" type="varchar2(255)">
             </column>
-            <column name="THE_PASSWORD" type="varchar2(50)">
-                <constraints nullable="false" />
+            <column name="TELEPHONE" type="varchar2(50)">
+            </column>
+            <column name="ETAT" type="varchar2(50)">
             </column>
             <column name="INSERTED_AT" type="timestamp(6)"/>
             <column name="INSERTED_BY" type="varchar2(255)"/>
             <column name="UPDATED_AT" type="timestamp(6)"/>
             <column name="UPDATED_BY" type="varchar2(255)"/>
 			<column name="UPDATE_DATE" type="timestamp(6)"/>
-			<column name="CONTENT" 		type="bytea"/>
 
         </createTable>
-        <addUniqueConstraint tableName="USER_" constraintName="UDX_USER"
+        <addUniqueConstraint tableName="ETABLISSEMENT" constraintName="UDX_ETABLISSEMENT"
                              columnNames="ID"/>
     </changeSet>
 

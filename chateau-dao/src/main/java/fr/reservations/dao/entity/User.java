@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "UTILISATEUR")
+@Table(name = "USER_")
 @EqualsAndHashCode(callSuper = true)
 public class User extends AbstractEntity {
 
