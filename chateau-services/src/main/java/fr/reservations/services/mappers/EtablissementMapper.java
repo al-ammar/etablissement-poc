@@ -37,8 +37,8 @@ public final class EtablissementMapper {
 	}
 
 	public static ChambreDTO toChambreDTO(Chambre c) {
-		ChambreDTO out = ChambreDTO.builder().description(c.getDescription()).etage(c.getEtage())
-				.libelle(c.getLibelle()).matricule(c.getMatricule()).statut(c.getStatut()).build();
+		ChambreDTO out = ChambreDTO.builder().description(c.getDescription()).etage(c.getEtage()).numero(c.getNumero())
+				.type(c.getType()).libelle(c.getLibelle()).matricule(c.getMatricule()).statut(c.getStatut()).build();
 		out.setId(c.getId());
 		out.setInsertedAt(c.getInsertedAt());
 		out.setUpdatedAt(c.getUpdatedAt());

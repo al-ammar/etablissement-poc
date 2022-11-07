@@ -32,6 +32,11 @@ public class ChambreDTO extends AbstractDTO {
 	private int etage;
 
 	@Schema(required = false)
-	private SectionDTO section;
+	private int numero;
 
+	@Schema(required = false)
+	private String type;
+
+	@Schema(required = false)
+	private SectionDTO section;
 }

@@ -31,13 +31,18 @@ public class Chambre extends AbstractEntity{
 
 	@Column(name = "DESCRIPTION")
 	private String description;
-
 	
 	@Column(name = "STATUT")
 	private String statut;
 	
 	@Column(name = "ETAGE")
 	private int etage;
+	
+	@Column(name = "NUMERO")
+	private int numero;
+	
+	@Column(name="TYPE")
+	private String type;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="SECTION_ID", referencedColumnName = "ID")

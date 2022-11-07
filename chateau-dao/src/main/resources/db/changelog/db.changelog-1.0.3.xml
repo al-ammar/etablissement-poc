@@ -103,6 +103,8 @@
 			<column name="DESCRIPTION" value="CHAMBRE"/>
 			<column name="STATUT" value="1"/>
 			<column name="ETAGE" value="1"/>
+			<column name="TYPE" value="SD"/>
+			<column name="NUMERO" value="11"/>
 			<column name="SECTION_ID" value="4d1ba685-3533-45d0-9c0d-9d3ebd4e7a54">
 			</column>
             <column name="INSERTED_AT" value="2022-11-06 12:36:58.611565"/>
@@ -116,6 +118,8 @@
 			<column name="DESCRIPTION" value="CHAMBREXXXXX"/>
 			<column name="STATUT" value="1"/>
 			<column name="ETAGE" value="1"/>
+			<column name="TYPE" value="C"/>
+			<column name="NUMERO" value="12"/>
 			<column name="SECTION_ID" value="4d1ba685-3533-45d0-9c0d-9d3ebd4e7a54">
 			</column>
             <column name="INSERTED_AT" value="2022-11-06 12:36:58.611565"/>
@@ -128,7 +132,9 @@
             <column name="LIBELLE" value="CHAMBREXXXX"/>
 			<column name="DESCRIPTION" value="CHAMBREXXXXX"/>
 			<column name="STATUT" value="1"/>
-			<column name="ETAGE" value="1"/>
+			<column name="ETAGE" value="2"/>
+			<column name="TYPE" value="C"/>
+			<column name="NUMERO" value="13"/>
 			<column name="SECTION_ID" value="d8554670-17c7-479c-a7a2-306dd7fde57c">
 			</column>
             <column name="INSERTED_AT" value="2022-11-06 12:36:58.611565"/>
@@ -142,6 +148,8 @@
 			<column name="DESCRIPTION" value="CHAMBREXXXXX"/>
 			<column name="STATUT" value="1"/>
 			<column name="ETAGE" value="1"/>
+			<column name="TYPE" value="C"/>
+			<column name="NUMERO" value="13"/>
 			<column name="SECTION_ID" value="ad80145b-b82b-4868-9a95-befa6d8d75e8">
 			</column>
             <column name="INSERTED_AT" value="2022-11-06 12:36:58.611565"/>
