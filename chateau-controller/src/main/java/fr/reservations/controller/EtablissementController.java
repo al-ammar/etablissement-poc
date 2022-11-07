@@ -39,9 +39,6 @@ public class EtablissementController {
 	@Autowired
 	private EtablissementServices services;
 	
-	@Autowired
-	private EtablissementRepository repository;
-
 	@Operation(summary = "GET ALL Etablissement")
 	@ApiResponses({ @ApiResponse(responseCode = "200", description = "Successfully retrieved all Etablissements"),
 			@ApiResponse(responseCode = "401", description = "Authorization denied"),
@@ -63,32 +60,5 @@ public class EtablissementController {
 	@GetMapping(value = "/{userID}")
 	public ResponseEntity<EtablissementDTO> getEtablissement(@PathVariable String id) {
 		return ResponseEntity.ok(services.getEtablissement(id));
-	}
-
-	@Operation(summary = "GET ALL Etablissement")
-	@ApiResponses({ @ApiResponse(responseCode = "200", description = "Successfully retrieved all Etablissements"),
-			@ApiResponse(responseCode = "401", description = "Authorization denied"),
-			@ApiResponse(responseCode = "404", description = "Not Found"),
-			@ApiResponse(responseCode = "500", description = "Unexpected system exception") })
-	@GetMapping(produces = UserController.JSON_TYPE)
-	@RequestMapping(path = "/test")
-	public ResponseEntity<Map> getEtablissements() {
-		Etablissement e = new Etablissement();
-		e.setMatricule("XXX");
-		Section s = new Section();
-		s.setMatricule("XXXXXX");
-		s.setEtablissement(e);
-		Section ss = new Section();
-		ss.setMatricule("SSSSS");
-		ss.setEtablissement(e);
-		Chambre B = new Chambre();
-		B.setMatricule("EFEFEFE");
-		B.setSection(ss);
-		ss.setChambres(Arrays.asList(B));
-		e.setSections(Arrays.asList(s, ss));
-		repository.save(e);
-		Map data = new HashMap<>();
-		data.put("data", "");
-		return ResponseEntity.ok(data);
 	}
 }
