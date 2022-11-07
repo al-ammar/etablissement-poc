@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@Builder
 @ToString(callSuper = true)
-public class EtablissementDTO extends AbstractDTO {
+@EqualsAndHashCode(callSuper = true)
+public class SectionDTO extends AbstractDTO{
 
 	@Schema(required = false)
 	private String matricule;
@@ -28,14 +28,9 @@ public class EtablissementDTO extends AbstractDTO {
 	private String description;
 
 	@Schema(required = false)
-	private String adresse;
+	private EtablissementDTO etablissement;
 
 	@Schema(required = false)
-	private String telephone;
+	private List<ChambreDTO> chambres;
 
-	@Schema(required = false)
-	private String etat;
-
-	@Schema(required = false)
-	private List<SectionDTO> sections;
 }

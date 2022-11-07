@@ -1,7 +1,5 @@
 package fr.reservations.common.dtos;
 
-import java.util.List;
-
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +14,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class EtablissementDTO extends AbstractDTO {
+public class ChambreDTO extends AbstractDTO {
 
 	@Schema(required = false)
 	private String matricule;
@@ -28,14 +26,12 @@ public class EtablissementDTO extends AbstractDTO {
 	private String description;
 
 	@Schema(required = false)
-	private String adresse;
+	private String statut;
 
 	@Schema(required = false)
-	private String telephone;
+	private int etage;
 
 	@Schema(required = false)
-	private String etat;
+	private SectionDTO section;
 
-	@Schema(required = false)
-	private List<SectionDTO> sections;
 }

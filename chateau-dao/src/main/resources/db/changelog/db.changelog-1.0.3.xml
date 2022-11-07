@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="insert_1" author="alaa">
+        <insert tableName="ETABLISSEMENT">
+            <column name="ID" value="7a4451eb-42aa-4246-aac0-17e6e612bab3">
+            </column>
+			<column name="CODE" value="ETAB_1"/>
+            <column name="LIBELLE" value="Chateau de versaille"/>
+			<column name="DESCRIPTION" value="Chateau de versaille"/>
+            <column name="ADRESSE" value="92600 Asnieres sur seine">
+            </column>
+            <column name="TELEPHONE" value="21266666666">
+            </column>
+            <column name="ETAT" value="1">
+            </column>
+            <column name="INSERTED_AT" value="2022-11-06 12:36:58.611565"/>
+            <column name="INSERTED_BY" value="INIT"/>
+        </insert>
+        <insert tableName="ETABLISSEMENT">
+            <column name="ID" value="d8554670-17c7-479c-a7a2-306dd7fde57c">
+            </column>
+			<column name="CODE" value="ETAB_2"/>
+            <column name="LIBELLE" value="Chateau de saint ouen"/>
+			<column name="DESCRIPTION" value="Chateau saint ouen"/>
+            <column name="ADRESSE" value="saint ouen">
+            </column>
+            <column name="TELEPHONE" value="21266666000">
+            </column>
+            <column name="ETAT" value="1">
+            </column>
+            <column name="INSERTED_AT" value="2022-11-06 12:36:58.611565"/>
+            <column name="INSERTED_BY" value="INIT"/>
+        </insert>
+        <insert tableName="USER_">
+            <column name="ID" value="varchar2(40)">
+            </column>
+			<column name="LAST_NAME" value="TARIK"/>
+            <column name="USER_NAME" value="tarik@g.com">
+            </column>
+            <column name="THE_PASSWORD" value="tariktariktariktarik">
+            </column>
+        </insert>
+        		<insert tableName="SECTION">
+			<column name="ID" value="4d1ba685-3533-45d0-9c0d-9d3ebd4e7a54"></column>
+			<column name="CODE" value="SEC XXXX" />
+			<column name="LIBELLE" value="SEC XXXX" />
+			<column name="DESCRIPTION" value="SEC XXXX" />
+            <column name="INSERTED_AT" value="2022-11-06 12:36:58.611565"/>
+			<column name="ETABLISSEMENT_ID" value="7a4451eb-42aa-4246-aac0-17e6e612bab3"></column>
+		</insert>
+		<insert tableName="SECTION">
+			<column name="ID" value="dbeac2fe-1f90-4812-ae73-c6dcba417108">
+			</column>
+			<column name="CODE" value="SECTION_1" />
+			<column name="LIBELLE" value="Section 1" />
+			<column name="DESCRIPTION" value="Section 1" />
+            <column name="INSERTED_AT" value="2022-11-06 12:36:58.611565"/>
+			<column name="INSERTED_BY" value="INIT" />
+			<column name="ETABLISSEMENT_ID" value="7a4451eb-42aa-4246-aac0-17e6e612bab3"></column>
+		</insert>
+		<insert tableName="SECTION">
+			<column name="ID" value="ad80145b-b82b-4868-9a95-befa6d8d75e8">
+			</column>
+			<column name="CODE" value="SECTION_2" />
+			<column name="LIBELLE" value="SECTION_2" />
+			<column name="DESCRIPTION" value="SECTION_2" />
+            <column name="INSERTED_AT" value="2022-11-06 12:36:58.611565"/>
+			<column name="INSERTED_BY" value="INIT" />
+			<column name="ETABLISSEMENT_ID" value="7a4451eb-42aa-4246-aac0-17e6e612bab3"></column>
+		</insert>
+		<insert tableName="SECTION">
+			<column name="ID" value="db89961e-86bc-4d74-861b-15897c1cdc4d">
+			</column>
+			<column name="CODE" value="SECTION" />
+			<column name="LIBELLE" value="SECTION" />
+			<column name="DESCRIPTION" value="SECTION" />
+
+            <column name="INSERTED_AT" value="2022-11-06 12:36:58.611565"/>
+			<column name="INSERTED_BY" value="INIT" />
+			<column name="ETABLISSEMENT_ID" value="7a4451eb-42aa-4246-aac0-17e6e612bab3"></column>
+		</insert>
+		<insert tableName="SECTION">
+			<column name="ID" value="d8554670-17c7-479c-a7a2-306dd7fde57c">
+			</column>
+			<column name="CODE" value="SECTION" />
+			<column name="LIBELLE" value="SECTION" />
+			<column name="DESCRIPTION" value="SECTION" />
+            <column name="INSERTED_AT" value="2022-11-06 12:36:58.611565"/>
+			<column name="INSERTED_BY" value="INIT" />
+			<column name="ETABLISSEMENT_ID" value="d8554670-17c7-479c-a7a2-306dd7fde57c"></column>
+		</insert>
+		
+		<insert tableName="CHAMBRE">
+		    <column name="ID" value="bdad23e9-716c-4cf8-a913-7c9efaf864f9">
+            </column>
+			<column name="CODE" value="CHAMBRE"/>
+            <column name="LIBELLE" value="CHAMBRE"/>
+			<column name="DESCRIPTION" value="CHAMBRE"/>
+			<column name="STATUT" value="1"/>
+			<column name="ETAGE" value="1"/>
+			<column name="SECTION_ID" value="4d1ba685-3533-45d0-9c0d-9d3ebd4e7a54">
+			</column>
+            <column name="INSERTED_AT" value="2022-11-06 12:36:58.611565"/>
+			<column name="INSERTED_BY" value="INIT" />
+		</insert>
+		<insert tableName="CHAMBRE">
+		    <column name="ID" value="0eb3fa59-acde-46e8-b28a-1698c7efb378">
+            </column>
+			<column name="CODE" value="CHAMBREXXXX"/>
+            <column name="LIBELLE" value="CHAMBREXXXX"/>
+			<column name="DESCRIPTION" value="CHAMBREXXXXX"/>
+			<column name="STATUT" value="1"/>
+			<column name="ETAGE" value="1"/>
+			<column name="SECTION_ID" value="4d1ba685-3533-45d0-9c0d-9d3ebd4e7a54">
+			</column>
+            <column name="INSERTED_AT" value="2022-11-06 12:36:58.611565"/>
+			<column name="INSERTED_BY" value="INIT" />
+		</insert>
+		<insert tableName="CHAMBRE">
+		    <column name="ID" value="fb55c9b3-bc77-4ea9-8143-6deec67fdd49">
+            </column>
+			<column name="CODE" value="CHAMBREXXXX"/>
+            <column name="LIBELLE" value="CHAMBREXXXX"/>
+			<column name="DESCRIPTION" value="CHAMBREXXXXX"/>
+			<column name="STATUT" value="1"/>
+			<column name="ETAGE" value="1"/>
+			<column name="SECTION_ID" value="d8554670-17c7-479c-a7a2-306dd7fde57c">
+			</column>
+            <column name="INSERTED_AT" value="2022-11-06 12:36:58.611565"/>
+			<column name="INSERTED_BY" value="INIT" />
+		</insert>
+		<insert tableName="CHAMBRE">
+		    <column name="ID" value="ac1bfc57-5692-4f0e-b6ed-f0f60f357349">
+            </column>
+			<column name="CODE" value="CHAMBREXXXX"/>
+            <column name="LIBELLE" value="CHAMBREXXXX"/>
+			<column name="DESCRIPTION" value="CHAMBREXXXXX"/>
+			<column name="STATUT" value="1"/>
+			<column name="ETAGE" value="1"/>
+			<column name="SECTION_ID" value="ad80145b-b82b-4868-9a95-befa6d8d75e8">
+			</column>
+            <column name="INSERTED_AT" value="2022-11-06 12:36:58.611565"/>
+			<column name="INSERTED_BY" value="INIT" />
+		</insert>
+		<insert tableName="USER_">
+		    <column name="ID" value="9c7e4957-51e0-4fa9-aae3-c1c9f412ad33">
+            </column>
+            <column name="USER_NAME" value="tarik@g.com"/>
+            <column name="THE_PASSWORD" value="9EFA4CF1C1616079C329BF422C91B6A3"/>
+		</insert>
+    </changeSet>
+</databaseChangeLog>
