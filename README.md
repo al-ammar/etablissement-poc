@@ -7,3 +7,5 @@ docker run --name pgadmin -p 5051:5051 -e "PGADMIN_DEFAULT_EMAIL=ammar.alaaeddin
 # Test Authentication
 curl -d '{"userName":"tarik@g.com", "password":"tariktariktariktarik"}' -X POST http://localhost:8086/rest/authentication -H "Content-Type: application/json"
 
+# Récupérer les établissements avec les sections et les chambres
+curl -v http://localhost:8086/rest/etablissement
